@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="main.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="col-sm-12 col-md-12">
+      <!-- only show this element when it isn't on mobile -->
+      <h1 class="visible-md visible-lg">Calorie Counter
+        <small class="pull-right">Total Calories : <span class="label label-default">0</span></small>
+        <hr />
+        </hr />
+      </h1>
+      <!-- only show this element when the user gets to a mobile version -->
+      <h3 class="visible-xs visible-sm">Calorie Counter
+        <small class="col-xs-12 text-right">Total Calories : <span class="label label-default">0</span></small>
+        <hr />
+        </hr />
+      </h3>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-md-push-8 new-student">
+      <h4>Add Food Eaten</h4>
+
+      <div class="form-group input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-user"></span>
+        </span>
+        <input autocomplete="off" type="text" class="form-control food-name" name="foodName" placeholder="Food Name">
+      </div>
+      <p class="invalid-input invalid-name"></p>
+
+      <div class="form-group input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-list-alt"></span>
+        </span>
+        <input type="text" class="form-control portion-size" name="course" placeholder="Portion Size">
+      </div>
+      <p class="invalid-input invalid-course"></p>
+
+      <div class="form-group input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-education"></span>
+        </span>
+        <input type="text" class="form-control calories-input" name="studentGrade" placeholder="Calories">
+      </div>
+      <p class="invalid-input invalid-grade">Enter total calories of item</p>
+
+      <button type="button" class="btn btn-success add-button">Add</button>
+      <button type="button" class="btn btn-default clear-button">Cancel</button>
+
+    </div>
+
+    <div class="col-sm-12 col-md-8 col-md-pull-4">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Food Name</th>
+            <th>Portion Size</th>
+            <th>Calories</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+      <div class="modal-dialog " role="document">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-left"></h4>
+          </div>
+
+          <div class="update-student modal-body">
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+              </span>
+              <input type="text" class="form-control student-name" name="studentName" placeholder="Student Name">
+            </div>
+            <p class="invalid-input invalid-name"></p>
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-list-alt"></span>
+              </span>
+              <input type="text" class="form-control student-course" name="course" placeholder="Student Course">
+            </div>
+            <p class="invalid-input invalid-course"></p>
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"></span>
+              </span>
+              <input type="text" class="form-control student-grade" name="studentGrade" placeholder="Student Grade">
+            </div>
+            <p class="invalid-input invalid-grade">Enter a whole number from 0 to 100</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success update-button">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Update Modal End -->
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel">
+      <div class="modal-dialog " role="document">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-left"></h4>
+          </div>
+
+          <div class="update-student modal-body">
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+              </span>
+              <input type="text" class="form-control student-name" name="studentName" placeholder="Student Name"
+                disabled>
+            </div>
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-list-alt"></span>
+              </span>
+              <input type="text" class="form-control course" name="course" placeholder="Student Course" disabled>
+            </div>
+
+            <div class="form-group input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"></span>
+              </span>
+              <input type="text" class="form-control grade" name="studentGrade" placeholder="Student Grade" disabled>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success delete-button" data-dismiss="modal">Confirm</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Modal End -->
+
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1></h1>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-block btn-warning" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Error Modal End -->
+
+
+  </div>
+</body>
+
+</html>
