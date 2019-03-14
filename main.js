@@ -1,12 +1,12 @@
 window.onload = () => {
-    const sgt = new SGT;
-    sgt.init();
+    const calorieCount = new calorieCounter;
+    calorieCount.init();
 }
 
-class SGT {
+class calorieCounter {
 
     constructor() {
-        this.totalCalories = null;
+        this.totalCalories = 0;
         this.foodList = [];
     }
 
@@ -25,9 +25,13 @@ class SGT {
 
         const item = { foodName, portionSize, calories };
         this.foodList.push(item);
-
+        this.calculateAverage(item);
     }
 
-
+    calculateAverage = food => {
+        this.totalCalories += parseInt(food.calories);
+        console.log("food list", this.foodList);
+        document.querySelector(".label-default").textContent = parseInt(this.totalCalories / this.foodList.length);
+    }
 
 }
