@@ -42,9 +42,6 @@ class calorieCounter {
     appendToTable = food => {
         const body = document.querySelector("tbody");
         const row = document.createElement("tr");
-        const newFood = document.createElement("td")
-        const newPortion = document.createElement("td")
-        const newCalorie = document.createElement("td")
         const newButtons = document.createElement("td");
         const deleteButton = document.createElement("button")
         const updateButton = document.createElement("button");
@@ -54,14 +51,15 @@ class calorieCounter {
         updateButton.classList.add('btn', 'btn-warning')
         updateButton.textContent = "Update";
 
-
         [deleteButton, updateButton].forEach(button => newButtons.appendChild(button));
 
-        newFood.textContent = food.foodName;
-        newPortion.textContent = food.portionSize;
-        newCalorie.textContent = food.calories;
+        Object.values(food).map(item => {
+            const newCell = document.createElement("td");
+            newCell.textContent = item;
+            row.appendChild(newCell);
+        })
 
-        [newFood, newPortion, newCalorie, newButtons].forEach(item => row.appendChild(item));
+        row.appendChild(newButtons);
         body.appendChild(row);
     }
 }
