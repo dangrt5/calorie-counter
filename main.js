@@ -40,6 +40,28 @@ class calorieCounter {
     }
 
     appendToTable = food => {
+        const body = document.querySelector("tbody");
+        const row = document.createElement("tr");
+        const newFood = document.createElement("td")
+        const newPortion = document.createElement("td")
+        const newCalorie = document.createElement("td")
+        const newButtons = document.createElement("td");
+        const deleteButton = document.createElement("button")
+        const updateButton = document.createElement("button");
 
+        deleteButton.classList.add('btn', 'btn-danger')
+        deleteButton.textContent = "Delete";
+        updateButton.classList.add('btn', 'btn-warning')
+        updateButton.textContent = "Update";
+
+
+        [deleteButton, updateButton].forEach(button => newButtons.appendChild(button));
+
+        newFood.textContent = food.foodName;
+        newPortion.textContent = food.portionSize;
+        newCalorie.textContent = food.calories;
+
+        [newFood, newPortion, newCalorie, newButtons].forEach(item => row.appendChild(item));
+        body.appendChild(row);
     }
 }
